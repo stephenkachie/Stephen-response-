@@ -1,0 +1,32 @@
+Script.js:
+document.addEventListener('DOMContentLoaded', function() {
+    // Form validation
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!name || !email || !message) {
+                alert('Please fill in all fields');
+                e.preventDefault();
+                return;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                e.preventDefault();
+            }
+        });
+    }
+
+    // Set active navigation link
+    const currentPage = location.pathname.split('/').pop();
+    document.querySelectorAll('nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});

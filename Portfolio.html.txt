@@ -1,0 +1,19 @@
+Portfolio.html 
+<!-- ... (header same as index) -->
+<main class="container">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Weather App</h3>
+            <p>Real-time weather forecasting application with interactive maps</p>
+        </div>
+        <div class="project-card">
+            <h3>Blog Platform</h3>
+            <p>Full-stack blogging solution with user authentication</p>
+        </div>
+        <div class="project-card">
+            <h3>E-Commerce Store</h3>
+            <p>Online shopping platform with payment integration</p>
+        </div>
+    </div>
+</main>

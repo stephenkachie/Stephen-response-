@@ -1,0 +1,50 @@
+Update script.js
+// Additional form feedback
+function showError(field, message) {
+    field.style.borderColor = '#ff0000';
+    field.nextElementSibling?.remove();
+    field.insertAdjacentHTML('afterend', `<div class="error" style="color:red">${message}</div>`);
+}
+
+function clearErrors() {
+    document.querySelectorAll('.error').forEach(error => error.remove());
+    document.querySelectorAll('input, textarea').forEach(field => {
+        field.style.borderColor = '#00FF00';
+    });
+}
+
+// Updated form validation
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        clearErrors();
+        
+        const fields = {
+            name: document.getElementById('name'),
+            email: document.getElementById('email'),
+            message: document.getElementById('message')
+        };
+
+        let isValid = true;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Validate each field
+        for (const [key, field] of Object.entries(fields)) {
+            if (!field.value.trim()) {
+                showError(field, `This field is required`);
+                isValid = false;
+            }
+            
+            if (key === 'email' && field.value && !emailPattern.test(field.value)) {
+                showError(field, 'Invalid email format');
+                isValid = false;
+            }
+        }
+
+        if (isValid) {
+            // Simulate form submission
+            alert('Message sent successfully!');
+            form.reset();
+        }
+    });
+}
